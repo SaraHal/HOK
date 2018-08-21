@@ -53,18 +53,18 @@ class Edit extends Component {
             <h4><Link to={`/organization/${this.state.customer._id}`}><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Customer List</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
-                <label for="id">id:</label>
+                <label for="id">ת.ז.</label>
                 <input type="text" class="form-control" name="id" value={id} onChange={this.onChange} placeholder="ID" />
               </div>
               <div class="form-group">
-                <label for="lastName">Last Name:</label>
+                <label for="lastName">משפחה</label>
                 <input type="text" class="form-control" name="lastName" value={lastName} onChange={this.onChange} placeholder="Last Name" />
               </div>
               <div class="form-group">
-                <label for="firstName">First Name:</label>
+                <label for="firstName">פרטי</label>
                 <input type="text" class="form-control" name="firstName" value={firstName} onChange={this.onChange} placeholder="First Name" />
               </div>
-              <button type="submit" class="btn btn-default">Submit</button>
+              <button type="submit" class="btn btn-default">עדכן</button>
             </form>
           </div>
         </div>

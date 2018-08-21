@@ -1,31 +1,26 @@
-var express = require('express');
-var router = express.Router();
-var mongoose = require('mongoose');
-var Program = require('../models/Program.js');
 
+import Program from '../models/program.model';
 
-router.post('/', function (req, res, next) {
-    console.log(req);
+const create = function (req, res, next) {
     Program.create(req.body, function (err, post) {
         if (err) return next(err);
         res.json(post);
     });
-});
+};
 
-router.put('/:id', function (req, res, next) {
+const update = function (req, res, next) {
     Program.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
         if (err) return next(err);
         res.json(post);
-    });    
-});
+    });
+};
 
-
-router.get('/:id', function (req, res, next) {    
+const getById = function (req, res, next) {
     Program.findById(req.params.id, function (err, post) {
         if (err) return next(err);
         res.json(post);
     });
-});
+};
 
+export default { create, update, getById };
 
-module.exports = router;
