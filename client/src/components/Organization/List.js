@@ -29,11 +29,11 @@ class OrganizationList extends Component {
         return (
             <Container>
 
-                <div class="panel-heading">
-                    <h3 class="panel-title" style={{ display: 'inline' }}>
+                <div className="panel-heading">
+                    <h3 className="panel-title" style={{ display: 'inline' }}>
                         ארגונים
                          </h3>
-                    <Link to="organization/create" class="btn btn-outline-secondary" style={{ float: 'left' }}> <FontAwesomeIcon icon={faPlus} /> חדש</Link>
+                    <Link to="organization/create" className="btn btn-outline-secondary" style={{ float: 'left' }}> <FontAwesomeIcon icon={faPlus} /> חדש</Link>
                 </div>
                 <Row>
                     <Col md="12">
@@ -48,7 +48,7 @@ class OrganizationList extends Component {
 
                                 {organizations.map(organization =>
 
-                                    <tr>
+                                    <tr key={organization._id}>
                                         <td>
                                             <Link to={`/organization/${organization._id}`}>
                                                 {organization.name}
@@ -57,11 +57,8 @@ class OrganizationList extends Component {
                                             <Link to={`/organization/${organization._id}`}>
                                                 {organization.code}
                                             </Link></td>
-
-
-
-
                                         <td><Link to={`/organization/${organization._id}/customer`}>לקוחות</Link></td>
+                                        <td><Link to={`/organization/${organization._id}/project`}>פרויקטים</Link></td>
                                     </tr>
                                 )}
 

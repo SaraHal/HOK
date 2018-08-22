@@ -35,29 +35,29 @@ class Create extends Component {
   render() {
     const { id, firstName, lastName } = this.state;
     return (
-      <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
+      <div className="container">
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h3 className="panel-title">
               לקוח חדש
             </h3>
           </div>
-          <div class="panel-body">
+          <div className="panel-body">
 
             <form onSubmit={this.onSubmit}>
-              <div class="form-group">
+              <div className="form-group">
                 <label for="id">ת.ז.</label>
-                <input type="text" class="form-control" name="id" value={id} onChange={this.onChange} placeholder="ת.ז." />
+                <input type="text" className="form-control" name="id" value={id} onChange={this.onChange} placeholder="ת.ז." />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label for="lastName">משפחה</label>
-                <input type="text" class="form-control" name="lastName" value={lastName} onChange={this.onChange} placeholder="משפחה" />
+                <input type="text" className="form-control" name="lastName" value={lastName} onChange={this.onChange} placeholder="משפחה" />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label for="firstName">פרטי</label>
-                <input type="text" class="form-control" name="firstName" value={firstName} onChange={this.onChange} placeholder="פרטי" />
+                <input type="text" className="form-control" name="firstName" value={firstName} onChange={this.onChange} placeholder="פרטי" />
               </div>
-              <button type="submit" class="btn btn-default">Submit</button>
+              <button type="submit" className="btn btn-default">Submit</button>
             </form>
           </div>
         </div>

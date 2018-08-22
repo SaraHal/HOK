@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import OrganizationService from '../../services/organization.service';
 
 import { Link } from 'react-router-dom';
+import ProjectService from '../../services/project.service'
 
 class Create extends Component {
 
   constructor() {
     super();
     this.state = {
-      name: '',
-      code: ''
-
+      name: ''
     };
   }
   onChange = (e) => {
@@ -23,35 +21,32 @@ class Create extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { name, code } = this.state;
-
-    OrganizationService.create({ name, code })
+    const { id, name } = this.state;
+    const { id: organization } = this.props.match.params;
+    ProjectService.create({ name, organization })
       .then((result) => {
-        this.props.history.push("/")
+        this.props.history.push(`/organization/${organization}/project`)
       });
   }
 
   render() {
-    const { name, code } = this.state;
+    const { id, name } = this.state;
     return (
       <div className="container">
         <div className="panel panel-default">
           <div className="panel-heading">
             <h3 className="panel-title">
-              ארגון חדש
+              פרויקט חדש
             </h3>
           </div>
           <div className="panel-body">
+
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
                 <label for="name">שם</label>
                 <input type="text" className="form-control" name="name" value={name} onChange={this.onChange} placeholder="שם" />
               </div>
-              <div className="form-group">
-                <label for="code">קוד</label>
-                <input type="text" className="form-control" name="code" value={code} onChange={this.onChange} placeholder="קוד" />
-              </div>
-              <button type="submit" className="btn btn-default">הוסף</button>
+              <button type="submit" className="btn btn-default">Submit</button>
             </form>
           </div>
         </div>

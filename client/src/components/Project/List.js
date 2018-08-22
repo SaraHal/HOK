@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Table, Container, Row, Col } from 'reactstrap';
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import OrganizationService from '../../services/organization.service';
 
-class CustomerList extends Component {
+class ProjectsList extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            customers: []
+            projects: []
         };
     }
 
     componentDidMount() {
         const { id: organizationID } = this.props.match.params;
         console.log(this.props);
-        OrganizationService.getCustomers(organizationID)
+        OrganizationService.getProjects(organizationID)
             .then(res => {
-                this.setState({ customers: res });
-                console.log(this.state.customers);
+                this.setState({ projects: res });
             });
     }
+
 
     render() {
         const { id: organizationID } = this.props.match.params;
@@ -34,28 +34,21 @@ class CustomerList extends Component {
                 <div className="panel panel-default">
 
                     <div className="panel-heading">
-                        <h3 className="panel-title" style={{ display: 'inline' }}>
-                            לקוחות
-                         </h3>
-                        <Link to={`/organization/${organizationID}/customer/create`} style={{ float: 'left' }} className="btn btn-outline-secondary" >
-                            <FontAwesomeIcon icon={faPlus} /> לקוח חדש</Link>
+                        <Link to={`/organization/${organizationID}/project/create`} style={{ float: 'left' }} className="btn btn-outline-secondary" >
+                            <FontAwesomeIcon icon={faPlus} /> פרויקט חדש</Link>
                     </div>
                     <div className="panel-body">
-
-
                         <Table borderless hover>
                             <thead>
                                 <tr>
-                                    <th>ת.ז.</th>
                                     <th>שם</th>
-                                  
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.state.customers.map(customer =>
+                                {this.state.projects.map(project =>
                                     <tr>
-                                        <td><Link to={`/customer/${customer._id}`}>{customer.id}</Link></td>                                        
-                                        <td><Link to={`/customer/${customer._id}`}>{customer.lastName} {customer.firstName}</Link></td>
+                                        <td><Link to={`/project/${project._id}`}>{project.id}</Link></td>                                        
+                                        <td><Link to={`/project/${project._id}`}>{project.name}</Link></td>
                                     </tr>
                                 )}
                             </tbody>
@@ -67,4 +60,4 @@ class CustomerList extends Component {
     }
 }
 
-export default CustomerList;
+export default ProjectsList;

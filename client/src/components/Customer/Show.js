@@ -27,15 +27,15 @@ class Show extends Component {
         const { id, firstName, lastName } = this.state.customer;
 
         return (
-            <div class="container">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
+            <div className="container">
+                <div className="panel panel-default">
+                    <div className="panel-heading">
+                        <h3 className="panel-title">
                             {firstName} {lastName}
                         </h3>
                     </div>
-                    <div class="panel-body">
-                        <h4><Link to="/"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Customer List</Link></h4>
+                    <div className="panel-body">
+                        <h4><Link to="/"><span className="glyphicon glyphicon-th-list" aria-hidden="true"></span> Customer List</Link></h4>
                         <dl>
                             <dt>ID:</dt>
                             <dd>{id}</dd>
@@ -47,7 +47,7 @@ class Show extends Component {
 
 
 
-                        <Link to={`/organization/edit/${this.state.customer._id}`} class="btn btn-success">Edit</Link>&nbsp;
+                        <Link to={`/organization/edit/${this.state.customer._id}`} className="btn btn-success">Edit</Link>&nbsp;
             
                     </div>
                 </div>

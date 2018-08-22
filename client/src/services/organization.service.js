@@ -37,4 +37,8 @@ const getCustomers = (id) => {
     return fetch(`${Resources.domain}/organization/${id}/customer`).then(response => response.json());
 }
 
-export default { get, getCustomers, getList, create, update };
+const getProjects = (id) => {
+    return fetch(`${Resources.domain}/organization/${id}/project`).then(response => response.json());
+}
+
+export default { get, getCustomers, getList, create, update,getProjects};

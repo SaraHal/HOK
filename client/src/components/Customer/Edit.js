@@ -42,29 +42,29 @@ class Edit extends Component {
     const { id, firstName, lastName } = this.state.customer;
 
     return (
-      <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
+      <div className="container">
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h3 className="panel-title">
               EDIT CUSTOMER
             </h3>
           </div>
-          <div class="panel-body">
-            <h4><Link to={`/organization/${this.state.customer._id}`}><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Customer List</Link></h4>
+          <div className="panel-body">
+            <h4><Link to={`/organization/${this.state.customer._id}`}><span className="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Customer List</Link></h4>
             <form onSubmit={this.onSubmit}>
-              <div class="form-group">
+              <div className="form-group">
                 <label for="id">ת.ז.</label>
-                <input type="text" class="form-control" name="id" value={id} onChange={this.onChange} placeholder="ID" />
+                <input type="text" className="form-control" name="id" value={id} onChange={this.onChange} placeholder="ID" />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label for="lastName">משפחה</label>
-                <input type="text" class="form-control" name="lastName" value={lastName} onChange={this.onChange} placeholder="Last Name" />
+                <input type="text" className="form-control" name="lastName" value={lastName} onChange={this.onChange} placeholder="Last Name" />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label for="firstName">פרטי</label>
-                <input type="text" class="form-control" name="firstName" value={firstName} onChange={this.onChange} placeholder="First Name" />
+                <input type="text" className="form-control" name="firstName" value={firstName} onChange={this.onChange} placeholder="First Name" />
               </div>
-              <button type="submit" class="btn btn-default">עדכן</button>
+              <button type="submit" className="btn btn-default">עדכן</button>
             </form>
           </div>
         </div>
