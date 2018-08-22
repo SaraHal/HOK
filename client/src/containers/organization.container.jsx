@@ -4,6 +4,8 @@ import EditOrganization from '../components/Organization/Edit';
 import OrganizationService from '../services/organization.service';
 import CustomerList from '../components/Customer/List';
 import CreateCustomer from '../components/Customer/Create';
+import ProjectList from '../components/Project/List';
+import CreateProject from '../components/Project/Create';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt, faUsers } from '@fortawesome/free-solid-svg-icons';
 
@@ -31,10 +33,10 @@ class Show extends Component {
         const { match } = this.props;
         const { organization } = this.state;
         return (
-            <div class="container">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title" style={{ display: 'inline' }}>
+            <div className="container">
+                <div className="panel panel-default">
+                    <div className="panel-heading">
+                        <h3 className="panel-title" style={{ display: 'inline' }}>
                             {organization.name}
                         </h3>
                         <Link to={`/organization/${organization._id}/edit`} >
@@ -47,10 +49,11 @@ class Show extends Component {
                 </div>
                 <Switch>
                     <Route path={`${match.path}/edit`} component={EditOrganization} />
-                    <Route path={`${match.path}/customer/create`} component={CreateCustomer} />
                     <Route path={`${match.path}/customer`} component={CustomerList} />
-                    <Route path={`${match.path}`} render={() => <Redirect to={`${match.url}/customer`} />} />
-
+                    <Route path={`${match.path}/customer/create`} component={CreateCustomer} />
+                    <Route path={`${match.path}/project`} component={ProjectList} />
+                    <Route path={`${match.path}/project/create`} component={CreateProject} />
+                    <Route path={`${match.path}`} render={() => <Redirect to={`${match.url}/project`} />} />
                 </Switch>
             </div>
         );

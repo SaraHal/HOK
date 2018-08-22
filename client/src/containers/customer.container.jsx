@@ -34,10 +34,10 @@ class Show extends Component {
         const { match } = this.props;
         console.log(match.url);
         return (
-            <div class="container">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title" style={{ display: 'inline' }}>
+            <div className="container">
+                <div className="panel panel-default">
+                    <div className="panel-heading">
+                        <h3 className="panel-title" style={{ display: 'inline' }}>
                             {firstName} {lastName}
                         </h3>
 

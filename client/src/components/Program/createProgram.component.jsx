@@ -35,29 +35,29 @@ class Create extends Component {
   render() {
     const { sum, startDate, numOfPayments } = this.state;
     return (
-      <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
+      <div className="container">
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h3 className="panel-title">
               ADD Program
             </h3>
           </div>
-          <div class="panel-body">
+          <div className="panel-body">
 
             <form onSubmit={this.onSubmit}>
-              <div class="form-group">
+              <div className="form-group">
                 <label for="sum">Sum:</label>
-                <input type="text" class="form-control" name="sum" value={sum} onChange={this.onChange} placeholder="Sum" />
+                <input type="text" className="form-control" name="sum" value={sum} onChange={this.onChange} placeholder="Sum" />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label for="startDate">Start Date:</label>
-                <input type="text" class="form-control" name="startDate" value={startDate} onChange={this.onChange} placeholder="Start Date" />
+                <input type="text" className="form-control" name="startDate" value={startDate} onChange={this.onChange} placeholder="Start Date" />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label for="numOfPayments">Num Of Payments:</label>
-                <input type="text" class="form-control" name="numOfPayments" value={numOfPayments} onChange={this.onChange} placeholder="Num Of Payments" />
+                <input type="text" className="form-control" name="numOfPayments" value={numOfPayments} onChange={this.onChange} placeholder="Num Of Payments" />
               </div>
-              <button type="submit" class="btn btn-default">Submit</button>
+              <button type="submit" className="btn btn-default">Submit</button>
             </form>
           </div>
         </div>

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom';
-import OrganizationList from './components/Organization/List';
-
-import CreateOrganization from './components/Organization/Create';
-
-import NavBar from './components/TopBar/TopBar';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
-import Organization from './containers/organization.container'
-import Customer from './containers/customer.container';
+import { Link } from 'react-router-dom';
+
+import {StaticNavBar, BreadCrumbs} from './components/TopBar/TopBar';
+
+import OrganizationList from './components/Organization/List';
+import Organization from './containers/organization.container';
+import CreateOrganization from './components/Organization/Create';
 
 
 class App extends Component {
@@ -23,17 +22,16 @@ class App extends Component {
 
   render() {
     return (
-
       <Router>
         <div>
-          <NavBar></NavBar>
+          <StaticNavBar/>
+          <BreadCrumbs match={this.props.match}/>
           <div id="page-content-wrapper">
             <Switch>
-              <Route exact path='/organization' component={OrganizationList} />
               <Route exact path='/' render={() => <Redirect to="/organization" />} />
-              <Route path='/organization/create' component={CreateOrganization} />      
-              <Route path={`/customer/:id`} component={Customer} />
-              <Route path='/organization/:id' component={Organization} />
+              <Route exact path='/organization' component={OrganizationList} />
+              <Route path='/organization/create' component={CreateOrganization} />   
+              <Route path='/organization/:id' component={Organization} /> 
             </Switch>
           </div>
         </div>

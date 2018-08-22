@@ -4,14 +4,14 @@ import { Nav, NavItem, NavLink, Navbar } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 
-class ResponsiveDrawer extends React.Component {
+class StaticNavBar extends React.Component {
 
     render() {
         return (
             <Navbar color="light" light expand="md">
                 <Nav >
                     <NavItem>
-                        <Link to={`/`} class="nav-link"> <FontAwesomeIcon icon={faHome} ></FontAwesomeIcon></Link>
+                        <Link to={`/`} className="nav-link"> <FontAwesomeIcon icon={faHome} ></FontAwesomeIcon></Link>
                     </NavItem>
 
                 </Nav>
@@ -21,5 +21,10 @@ class ResponsiveDrawer extends React.Component {
     }
 }
 
-
-export default ResponsiveDrawer;
+const BreadCrumbs= ({title, match}) =>
+<div className="container">
+    <h3 className="panel-title" style={{ display: 'inline' }}> {title}</h3> {match}
+</div>
+;
+  
+export {StaticNavBar, BreadCrumbs};

@@ -30,16 +30,16 @@ class ProgramList extends Component {
         const { programs } = this.state;
         return (
 
-            <div class="container">
-                <div class="panel panel-default">
+            <div className="container">
+                <div className="panel panel-default">
 
-                    <div class="panel-heading">
-                        <h3 class="panel-title" style={{ display: 'inline' }}>
+                    <div className="panel-heading">
+                        <h3 className="panel-title" style={{ display: 'inline' }}>
                             תוכניות
                          </h3>
-                        <Link to={`/customer/${customerID}/program/create`} style={{ float: 'left' }} class="btn btn-outline-secondary" > <FontAwesomeIcon icon={faPlus} /> חדש</Link>
+                        <Link to={`/customer/${customerID}/program/create`} style={{ float: 'left' }} className="btn btn-outline-secondary" > <FontAwesomeIcon icon={faPlus} /> חדש</Link>
                     </div>
-                    <div class="panel-body">
+                    <div className="panel-body">
 
 
                         <Table borderless hover>
