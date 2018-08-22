@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import PaymentMethodSchema from './paymentMethod.model';
 
 const ProgramSchema = new mongoose.Schema({
   customer: {
@@ -15,21 +16,9 @@ const ProgramSchema = new mongoose.Schema({
   launchDay: {
     type: Number
   },
-  paymentMethodDetails: {
-    bankId: Number,
-    branchId: Number,
-    accountNumber: {
-      type: String
-    },
-    creditNumber: {
-      type: String
-    },
-    expiringDate: {
-      type: Date
-    },
-    cvv2: {
-      type: String
-    }
+  paymentMethod: {
+    type:PaymentMethodSchema,
+    required:true
   },
   isActive: {
     type: Boolean,
@@ -38,5 +27,5 @@ const ProgramSchema = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model('Program', ProgramSchema);
+export default mongoose.model('Program', ProgramSchema);
 
