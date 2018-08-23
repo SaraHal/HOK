@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import { Link } from 'react-router-dom';
 import OrganizationService from '../../services/organization.service';
 class Edit extends Component {
 
@@ -50,11 +49,11 @@ class Edit extends Component {
           <div className="panel-body">
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
-                <label for="name">שם</label>
+                <label htmlFor="name">שם</label>
                 <input type="text" className="form-control" name="name" value={name} onChange={this.onChange} placeholder="Name" />
               </div>
               <div className="form-group">
-                <label for="title">קוד</label>
+                <label htmlFor="title">קוד</label>
                 <input type="text" className="form-control" name="code" value={code} onChange={this.onChange} placeholder="Code" />
               </div>
 

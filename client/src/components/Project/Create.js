@@ -43,7 +43,7 @@ class Create extends Component {
 
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
-                <label for="name">שם</label>
+                <label htmlFor="name">שם</label>
                 <input type="text" className="form-control" name="name" value={name} onChange={this.onChange} placeholder="שם" />
               </div>
               <button type="submit" className="btn btn-default">Submit</button>

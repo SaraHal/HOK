@@ -50,11 +50,11 @@ class Edit extends Component {
           <div className="panel-body">
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
-                <label for="name">Name:</label>
+                <label fohtmlForr="name">Name:</label>
                 <input type="text" className="form-control" name="name" value={name} onChange={this.onChange} placeholder="Name" />
               </div>
               <div className="form-group">
-                <label for="title">Code:</label>
+                <label htmlFor="title">Code:</label>
                 <input type="text" className="form-control" name="code" value={code} onChange={this.onChange} placeholder="Code" />
               </div>
 

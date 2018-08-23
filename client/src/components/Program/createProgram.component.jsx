@@ -46,15 +46,15 @@ class Create extends Component {
 
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
-                <label for="sum">Sum:</label>
+                <label htmlFor="sum">Sum:</label>
                 <input type="text" className="form-control" name="sum" value={sum} onChange={this.onChange} placeholder="Sum" />
               </div>
               <div className="form-group">
-                <label for="startDate">Start Date:</label>
+                <label htmlFor="startDate">Start Date:</label>
                 <input type="text" className="form-control" name="startDate" value={startDate} onChange={this.onChange} placeholder="Start Date" />
               </div>
               <div className="form-group">
-                <label for="numOfPayments">Num Of Payments:</label>
+                <label htmlFor="numOfPayments">Num Of Payments:</label>
                 <input type="text" className="form-control" name="numOfPayments" value={numOfPayments} onChange={this.onChange} placeholder="Num Of Payments" />
               </div>
               <button type="submit" className="btn btn-default">Submit</button>

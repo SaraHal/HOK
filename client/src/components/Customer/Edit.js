@@ -53,15 +53,15 @@ class Edit extends Component {
             <h4><Link to={`/organization/${this.state.customer._id}`}><span className="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Customer List</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
-                <label for="id">ת.ז.</label>
+                <label htmlFor="id">ת.ז.</label>
                 <input type="text" className="form-control" name="id" value={id} onChange={this.onChange} placeholder="ID" />
               </div>
               <div className="form-group">
-                <label for="lastName">משפחה</label>
+                <label htmlFor="lastName">משפחה</label>
                 <input type="text" className="form-control" name="lastName" value={lastName} onChange={this.onChange} placeholder="Last Name" />
               </div>
               <div className="form-group">
-                <label for="firstName">פרטי</label>
+                <label htmlFor="firstName">פרטי</label>
                 <input type="text" className="form-control" name="firstName" value={firstName} onChange={this.onChange} placeholder="First Name" />
               </div>
               <button type="submit" className="btn btn-default">עדכן</button>

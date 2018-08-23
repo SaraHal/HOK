@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import OrganizationService from '../../services/organization.service';
-
+  
 class OrganizationList extends Component {
 
     constructor(props) {
@@ -28,7 +28,6 @@ class OrganizationList extends Component {
         const { organizations } = this.state;
         return (
             <Container>
-
                 <div className="panel-heading">
                     <h3 className="panel-title" style={{ display: 'inline' }}>
                         ארגונים

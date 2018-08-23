@@ -1,3 +1,3 @@
 export default {
-    domain: 'http://localhost:3000/api'
+    domain: 'http://localhost:3100/api'
 }

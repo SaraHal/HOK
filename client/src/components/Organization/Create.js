@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import OrganizationService from '../../services/organization.service';
 
 import { Link } from 'react-router-dom';
@@ -44,11 +43,11 @@ class Create extends Component {
           <div className="panel-body">
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
-                <label for="name">שם</label>
+                <label htmlFor="name">שם</label>
                 <input type="text" className="form-control" name="name" value={name} onChange={this.onChange} placeholder="שם" />
               </div>
               <div className="form-group">
-                <label for="code">קוד</label>
+                <label htmlFor="code">קוד</label>
                 <input type="text" className="form-control" name="code" value={code} onChange={this.onChange} placeholder="קוד" />
               </div>
               <button type="submit" className="btn btn-default">הוסף</button>

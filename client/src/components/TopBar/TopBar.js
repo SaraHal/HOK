@@ -20,11 +20,5 @@ class StaticNavBar extends React.Component {
         );
     }
 }
-
-const BreadCrumbs= ({title, match}) =>
-<div className="container">
-    <h3 className="panel-title" style={{ display: 'inline' }}> {title}</h3> {match}
-</div>
-;
   
-export {StaticNavBar, BreadCrumbs};
+export {StaticNavBar};
