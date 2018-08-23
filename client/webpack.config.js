@@ -1,3 +1,4 @@
+
 module.exports = {
     entry: [
         './src/index.js'
@@ -5,12 +6,8 @@ module.exports = {
     mode: 'development',
     devtool: 'cheap-module-inline-source-map',
     output: {
-        devtoolLineToLine: true,
-        sourceMapFilename: "./bundle.js.map",
-        pathinfo: true,
         path: __dirname,
-        filename: "bundle.js",
-        publicPath: '/'
+        filename: "bundle.js"
     },
 
     devServer: {
