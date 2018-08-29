@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
-import { Table, Container, Row, Col } from 'reactstrap';
+import { Table } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
@@ -34,7 +33,7 @@ class ProjectsList extends Component {
                 <div className="panel panel-default">
 
                     <div className="panel-heading">
-                        <Link to={`/organization/${organizationID}/project/create`} style={{ float: 'left' }} className="btn btn-outline-secondary" >
+                        <Link to={`/organizations/${organizationID}/projects/create`} style={{ float: 'left' }} className="btn btn-outline-secondary" >
                             <FontAwesomeIcon icon={faPlus} /> פרויקט חדש</Link>
                     </div>
                     <div className="panel-body">
@@ -47,8 +46,8 @@ class ProjectsList extends Component {
                             <tbody>
                                 {this.state.projects.map(project =>
                                     <tr>
-                                        <td><Link to={`/project/${project._id}`}>{project.id}</Link></td>                                        
-                                        <td><Link to={`/project/${project._id}`}>{project.name}</Link></td>
+                                        <td><Link to={`/projects/${project._id}`}>{project.id}</Link></td>                                        
+                                        <td><Link to={`/projects/${project._id}`}>{project.name}</Link></td>
                                     </tr>
                                 )}
                             </tbody>

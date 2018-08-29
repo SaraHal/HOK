@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import OrganizationService from '../../services/organization.service';
 
-import { Link } from 'react-router-dom';
-
 class Create extends Component {
 
   constructor() {

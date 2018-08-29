@@ -50,7 +50,7 @@ class Edit extends Component {
             </h3>
           </div>
           <div className="panel-body">
-            <h4><Link to={`/organization/${this.state.customer._id}`}><span className="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Customer List</Link></h4>
+            <h4><Link to={`/organizations/${this.state.customer._id}`}><span className="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Customer List</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
                 <label htmlFor="id">ת.ז.</label>

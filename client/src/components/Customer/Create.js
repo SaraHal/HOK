@@ -28,7 +28,7 @@ class Create extends Component {
     const { id: organization } = this.props.match.params;
     CustomerService.create({ id, firstName, lastName, organization })
       .then((result) => {
-        this.props.history.push(`/organization/${organization}/customer`)
+        this.props.history.push(`/organizations/${organization}/customer`)
       });
   }
 

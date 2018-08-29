@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import { Link , Switch} from 'react-router-dom';
+import CrumbRoute from '../../crumb-route';
 
-import { Link } from 'react-router-dom';
 import OrganizationService from '../../services/organization.service';
+
+import EditOrganization from './Edit';
+import CustomerList from '../Customer/List';
+import ProjectList from '../Project/List';
+
 class Show extends Component {
 
     constructor(props) {
@@ -29,7 +35,8 @@ class Show extends Component {
     }
 
     render() {
-        const { organization } = this.state
+        const { match } = this.props;
+        const { organization } = this.state;
         return (
             <div className="container">
                 <div className="panel panel-default">
@@ -52,6 +59,11 @@ class Show extends Component {
                         <button onClick={this.delete.bind(this, organization._id)} className="btn btn-danger">Delete</button>
                     </div>
                 </div>
+                <Switch>
+                    <CrumbRoute title="עריכה" path={`${match.path}/edit`} component={EditOrganization} />
+                    <CrumbRoute title="לקוחות" path={`${match.path}/customer`} component={CustomerList} />
+                    <CrumbRoute title="פרויקטים" path={`${match.path}/project`} component={ProjectList} />
+                </Switch>
             </div>
         );
     }

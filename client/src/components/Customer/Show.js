@@ -47,7 +47,7 @@ class Show extends Component {
 
 
 
-                        <Link to={`/organization/edit/${this.state.customer._id}`} className="btn btn-success">Edit</Link>&nbsp;
+                        <Link to={`/organizations/edit/${this.state.customer._id}`} className="btn btn-success">Edit</Link>&nbsp;
             
                     </div>
                 </div>

@@ -1,38 +1,26 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter as Redirect, Switch } from 'react-router-dom';
 
-import {StaticNavBar} from './components/TopBar/TopBar';
+import { StaticNavBar } from './components/TopBar/TopBar';
 
 import OrganizationList from './components/Organization/List';
-import Organization from './containers/organization.container';
-import CreateOrganization from './components/Organization/Create';
 
+import { Breadcrumbs } from 'react-breadcrumbs';
+import CrumbRoute from './crumb-route.jsx';
 
 class App extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-
-  }
-
   render() {
     return (
-      <Router>
-        <div>
-          <StaticNavBar/>
-          <div id="page-content-wrapper">
-            <Switch>
-              <Route exact  path='/' render={() => <Redirect to="/organization" />} />
-              <Route exact path='/organization' component={OrganizationList} />
-              <Route path='/organization/create' component={CreateOrganization} />   
-              <Route path='/organization/:id' component={Organization} /> 
-            </Switch>
-          </div>
+      <div>
+        <StaticNavBar />
+        <Breadcrumbs className="demo__crumbs" />
+        <div id="page-content-wrapper">
+          <Switch>
+            <CrumbRoute exact path='/' render={() => <Redirect to="/organizations" />} />
+            <CrumbRoute title="ארגונים" path='/organizations' component={OrganizationList} />
+          </Switch>
         </div>
-      </Router >
+      </div>
     );
   }
 }

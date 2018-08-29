@@ -33,7 +33,7 @@ class Edit extends Component {
 
     OrganizationService.update(id, { name, code })
       .then((result) => {
-        this.props.history.push(`/organization/${id}`)
+        this.props.history.push(`/organizations/${id}`)
       });
   }
 

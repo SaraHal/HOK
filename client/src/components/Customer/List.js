@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom';
+
+import CreateCustomer from './Create';
+import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Table, Container, Row, Col } from 'reactstrap';
+import { Table} from 'reactstrap';
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import CrumbRoute from '../../crumb-route.jsx';
 
 import OrganizationService from '../../services/organization.service';
 
@@ -37,8 +39,8 @@ class CustomerList extends Component {
                         <h3 className="panel-title" style={{ display: 'inline' }}>
                             לקוחות
                          </h3>
-                        <Link to={`/organization/${organizationID}/customer/create`} style={{ float: 'left' }} className="btn btn-outline-secondary" >
-                            <FontAwesomeIcon icon={faPlus} /> לקוח חדש</Link>
+                        <NavLink to={`/organizations/${organizationID}/customers/create`} style={{ float: 'left' }} className="btn btn-outline-secondary" >
+                            <FontAwesomeIcon icon={faPlus} /> לקוח חדש</NavLink>
                     </div>
                     <div className="panel-body">
 
@@ -48,20 +50,23 @@ class CustomerList extends Component {
                                 <tr>
                                     <th>ת.ז.</th>
                                     <th>שם</th>
-                                  
+
                                 </tr>
                             </thead>
                             <tbody>
                                 {this.state.customers.map(customer =>
                                     <tr>
-                                        <td><Link to={`/customer/${customer._id}`}>{customer.id}</Link></td>                                        
-                                        <td><Link to={`/customer/${customer._id}`}>{customer.lastName} {customer.firstName}</Link></td>
+                                        <td><NavLink to={`/customers/${customer._id}`}>{customer.id}</NavLink></td>
+                                        <td><NavLink to={`/customers/${customer._id}`}>{customer.lastName} {customer.firstName}</NavLink></td>
                                     </tr>
                                 )}
                             </tbody>
                         </Table>
                     </div>
                 </div>
+                <Switch>
+                    <CrumbRoute title="הוסף לקוח" path={`${match.path}/customers/create`} component={CreateCustomer} />
+                </Switch>
             </div>
         );
     }
