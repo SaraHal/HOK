@@ -8,6 +8,6 @@ import CrumbRoute from './crumb-route.jsx';
 
 ReactDOM.render((
     <Router>
-        <CrumbRoute path="/" component={ App } />
+        <CrumbRoute hidden path="/" component={ App } />
     </Router>
 ), document.getElementById('app'));

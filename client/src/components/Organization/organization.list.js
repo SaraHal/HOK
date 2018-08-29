@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
-import { NavLink, Switch, Route } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 import { Table, Container, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-import ShowOrganization from './Show';
-import CreateOrganization from './Create';
-import CustomersList from '../Customer/List';
-import ProjectsList from '../Project/List';
 
 import OrganizationService from '../../services/organization.service';
-import CrumbRoute from '../../crumb-route.jsx';
 
 class OrganizationList extends Component {
 
@@ -65,14 +60,6 @@ class OrganizationList extends Component {
                         </Table>
                     </Col>
                 </Row>
-                <Switch>
-                <Route path="/" exact render={ props => <span>Home content...</span> } />       
-
-                    <CrumbRoute title="חדש" path={`${match.url}/create`} component={CreateOrganization} />
-                    <CrumbRoute path={`${match.url}/:id`} component={ShowOrganization} />
-                    <CrumbRoute title="לקוחות" path={`${match.url}/:id/customers`} component={CustomersList} />
-                    <CrumbRoute title="פרויקטים" path={`${match.url}/:id/projects`} component={ProjectsList} />
-                </Switch>
             </Container>
         );
     }

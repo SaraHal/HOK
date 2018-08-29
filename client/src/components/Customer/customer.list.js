@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-import CreateCustomer from './Create';
+import CreateCustomer from './customer.create';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Table} from 'reactstrap';
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import CrumbRoute from '../../crumb-route.jsx';
+import CrumbRoute from '../../crumb-route';
 
 import OrganizationService from '../../services/organization.service';
 
