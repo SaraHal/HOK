@@ -60,6 +60,7 @@ class OrganizationList extends Component {
                         </Table>
                     </Col>
                 </Row>
+                
             </Container>
         );
     }

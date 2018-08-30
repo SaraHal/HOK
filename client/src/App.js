@@ -20,11 +20,8 @@ class App extends Component {
         <Breadcrumbs hidden className="demo__crumbs" />
         <div id="page-content-wrapper">
           <Switch>
-            {/* <CrumbRoute hidden  path='/' render={() => <Redirect to="/organizations" />} /> */}
-            <CrumbRoute title="ארגונים" path='/organizations' component={OrganizationList} />
-            <CrumbRoute title="חדש" path='/organizations/create' component={CreateOrganization} />
-            <CrumbRoute title="עריכה" path='/organizations/:id/edit' component={EditOrganization} />
-            <CrumbRoute title=":id" path='/organizations/:id' component={ShowOrganization} />
+            <CrumbRoute exact path='/' render={() => <Redirect to="/organizations" />} />
+            <CrumbRoute title="ארגונים" exact path='/organizations' component={OrganizationList}/>
           </Switch>
         </div>
       </div>
