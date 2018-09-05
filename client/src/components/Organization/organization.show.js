@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import {Switch, Link, CrumbRoute} from 'react-router-dom';
+
 import OrganizationService from '../../services/organization.service';
+
+import EditOrganization from '../Organization/organization.edit';
+import ProjectsList from '../Project/project.list';
+import CustomerList from '../Customer/customer.list';
 
 
 class Show extends Component {
@@ -50,10 +55,15 @@ class Show extends Component {
 
                         </dl>
 
-                        <Link to={`${match.path}/edit`} className="btn btn-success">Edit</Link>
+                        <Link to={`${match.url}/edit`} className="btn btn-success">Edit</Link>
                         <button onClick={this.delete.bind(this, organization._id)} className="btn btn-danger">Delete</button>
                     </div>
                 </div>
+                <Switch>
+                <CrumbRoute title="עריכה" path={`${match.path}/edit`} component={EditOrganization} />
+                <CrumbRoute title="פרויקטים" path={`${match.path}/projects`} component={ProjectsList} />
+                <CrumbRoute title="לקוחות" path={`${match.path}/customers`} component={CustomerList} />
+                </Switch>
             </div>
         );
     }

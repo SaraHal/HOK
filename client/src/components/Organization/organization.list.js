@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { NavLink} from 'react-router-dom';
+import { Switch, NavLink, CrumbRoute} from 'react-router-dom';
 import { Table, Container, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 
+import CreateOrganization from '../Organization/organization.create';
+import ShowOrganization from '../Organization/organization.show';
 import OrganizationService from '../../services/organization.service';
 
 class OrganizationList extends Component {
@@ -60,7 +62,10 @@ class OrganizationList extends Component {
                         </Table>
                     </Col>
                 </Row>
-                
+                <Switch>
+                <CrumbRoute title="חדש" path={`${match.path}/create`} component={CreateOrganization} />
+                <CrumbRoute path={`${match.path}/:id`} component={ShowOrganization} />
+                </Switch>
             </Container>
         );
     }

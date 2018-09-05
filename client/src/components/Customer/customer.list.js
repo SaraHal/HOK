@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 
 import CreateCustomer from './customer.create';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Switch, CrumbRoute } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Table} from 'reactstrap';
+import { Table } from 'reactstrap';
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import CrumbRoute from '../../crumb-route';
 
 import OrganizationService from '../../services/organization.service';
 
@@ -29,7 +28,8 @@ class CustomerList extends Component {
     }
 
     render() {
-        const { id: organizationID } = this.props.match.params;
+        const { match } = this.props;
+        const { id: organizationID } = match.params;
         return (
 
             <div className="container">
