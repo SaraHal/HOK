@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Switch, NavLink, CrumbRoute} from 'react-router-dom';
+import { Switch, NavLink, CrumbRoute } from 'react-router-dom';
 import { Table, Container, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 
-import CreateOrganization from '../Organization/organization.create';
-import ShowOrganization from '../Organization/organization.show';
+import CreateOrganization from "./organization.create";
+import ShowOrganization from "./organization.show";
 import OrganizationService from '../../services/organization.service';
 
 class OrganizationList extends Component {
@@ -14,13 +14,13 @@ class OrganizationList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            organizations: []
+            organizations: [],
         };
     }
 
     componentDidMount() {
         OrganizationService.getList()
-            .then(res => {
+            .then((res) => {
                 this.setState({ organizations: res });
             });
     }
@@ -55,7 +55,7 @@ class OrganizationList extends Component {
                                         <td><NavLink to={`${match.url}/${organization._id}`}>{organization.code}</NavLink></td>
                                         <td><NavLink to={`${match.url}/${organization._id}/customers`}>לקוחות</NavLink></td>
                                         <td><NavLink to={`${match.url}/${organization._id}/projects`}>פרויקטים</NavLink></td>
-                                    </tr>
+                                    </tr>,
                                 )}
 
                             </tbody>
@@ -63,8 +63,8 @@ class OrganizationList extends Component {
                     </Col>
                 </Row>
                 <Switch>
-                <CrumbRoute title="חדש" path={`${match.path}/create`} component={CreateOrganization} />
-                <CrumbRoute path={`${match.path}/:id`} component={ShowOrganization} />
+                    <CrumbRoute title="חדש" path={`${match.path}/create`} component={CreateOrganization} />
+                    <CrumbRoute path={`${match.path}/:id`} component={ShowOrganization} />
                 </Switch>
             </Container>
         );

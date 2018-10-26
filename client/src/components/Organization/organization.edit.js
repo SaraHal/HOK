@@ -1,38 +1,38 @@
 import React, { Component } from 'react';
 
 import OrganizationService from '../../services/organization.service';
-class Edit extends Component {
 
+class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      organization: {}
+      organization: {},
     };
   }
 
   componentDidMount() {
     const { id } = this.props.match.params;
     OrganizationService.get(id)
-      .then(res => {
+      .then((res) => {
         this.setState({ organization: res });
-        console.log(this.state.organization);
+        // console.log(this.state.organization);
       });
   }
 
-  onChange = (e) => {
+  onChange(e) {
     const state = this.state.organization;
     state[e.target.name] = e.target.value;
     this.setState({ organization: state });
   }
 
-  onSubmit = (e) => {
+  onSubmit(e) {
     e.preventDefault();
     const { id } = this.props.match.params;
     const { name, code } = this.state.organization;
 
     OrganizationService.update(id, { name, code })
-      .then((result) => {
-        this.props.history.push(`/organizations/${id}`)
+      .then(() => {
+        this.props.history.push(`/organizations/${id}`);
       });
   }
 

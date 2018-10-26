@@ -1,7 +1,27 @@
 {
     "extends": "airbnb-base",
     "env": {
-      "browser": true,
-      "node": true
+        "browser": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "react/jsx-uses-vars": "error",
+        "react/jsx-uses-react": "error",
+        "no-underscore-dangle": [
+            2,
+            {
+                "allow": ["_id"]
+            }
+        ]
     }
-  } 
+}

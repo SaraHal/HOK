@@ -55,7 +55,7 @@ class CustomerList extends Component {
                             </thead>
                             <tbody>
                                 {this.state.customers.map(customer =>
-                                    <tr>
+                                    <tr key={customer._id}>
                                         <td><NavLink to={`/customers/${customer._id}`}>{customer.id}</NavLink></td>
                                         <td><NavLink to={`/customers/${customer._id}`}>{customer.lastName} {customer.firstName}</NavLink></td>
                                     </tr>
