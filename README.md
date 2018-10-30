@@ -28,7 +28,7 @@
 | POST | /organization | Create organization |
 | PUT | /organization/:id/ | Update organization |
 | GET | /organization/:id/customer | Organization's customers list |
-| POST | /customer | new Customer
+| POST | /customer | new Customer |
 
 
 
