@@ -28,7 +28,15 @@
 | POST | /organization | Create organization |
 | PUT | /organization/:id/ | Update organization |
 | GET | /organization/:id/customer | Organization's customers list |
-| POST | /customer | new Customer |
-
-
+| POST | /customer | Create customer |
+| GET | /customer/:id/ | Get customer |
+| PUT | /customer/:id/ | Update customer |
+| GET | /customer/:id/program | List of customer programs |
+| POST | /program | Create program |
+| GET | /program/:id/ | Get program |
+| PUT | /program/:id/ | Update program |
+| GET | /organization/:id/project | Get organization project |
+| POST | /project | Create project |
+| GET | /project/:id/ | Get project |
+| PUT | /project/:id/ | Update project |
 
