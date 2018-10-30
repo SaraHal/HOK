@@ -1,3 +1,67 @@
+## Models
+
+##### Organization
+ * name (Required, Type: string, max-length:25)
+ * communication (Required, Type: Communication)
+ * masavData (Required at least 1 of the properties: credit or charge)
+    * Credit
+      * CodeNosse (Type: string, length:8)
+      * senderCode (Type: string, length:5)
+    * Charge
+      * CodeNosse (Type: string, length:8)
+      * senderCode (Type: string, length:5)
+ * concats (Type: [ Concat ])
+ * paymentAgreement
+    * minPrice (Required, Type: Number)
+    * commissionPerUnit (Required, Type: Number)
+    * dayOfCharge (Required, Type: Number, range: 1-28)
+    * paymentMethod (Required, Type: PaymentMethod)
+    
+##### Customer
+ * Id (Required, Type: string, length:9)
+ * First name (Required, Type: string, max-length:25)
+ * Last Name (Required, Type: string, max-length:25)
+ * communication (Required, Type: Communication)
+ * Organization (Type: ObjectId)
+ 
+##### Project
+ * Name (Required, Type: string, max-length:25)
+ * Organization (Required, Type: ObjectId)
+ 
+##### Program
+ * sum (Required, Type: Number)
+ * startDate  (Required, Type: Date)
+ * numOfPayments (Type: Number)
+ * launchDay (Required, Type: Number)
+ * paymentMethod (Required, Type: PaymentMethod)
+ * project (Required, Type: ObjectId)
+ * customer (Required, Type: ObjectId)
+
+##### PaymentMethod (Required at least 1 of the properties: bankAccount or creditCard)
+ * bankAccount
+    * bankId (Required, Type: Number, length: 2)
+    * branchId (Required, Type: string, length: 3)
+    * accountNumber (Required, Type: string)
+ * creditCard
+    * creditNumber (Required, Type: string)
+    * expiringDate (Required, Type: Mm/yyyy)
+    * cvv2 (Required, Type: string, length: 3)
+    
+##### Concat
+ * name (Required, Type: string, max-length:35)
+ * celular (Required, Type: string, length:10)
+ * email (Type: Email, max-length:50)
+ * remarks  (Type: Email, max-length:50)
+ 
+##### Communication 
+ * address
+    * city
+      * id (Required, Type: string, length: 15)
+      * name (Required, Type: string, length: 25)
+    * street (Type: string, max-length:50)
+ * phone (Type: string, length:10)
+ * email (Type: Email, max-length:50)
+    
 ## Page Navigation
 
 |  |  |
