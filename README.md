@@ -21,8 +21,8 @@
 
 ## Endpoints
 
-|  |  | |
-| ------ | ------ |
+|  |  |   |
+| ------ | ------ | ------ |
 | GET | /organization | Organization lists |
 | GET | /organization/:id/ | Get organization |
 | POST | /organization | Create organization |
