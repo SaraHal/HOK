@@ -21,7 +21,7 @@
 
 ## Endpoints
 
-|  |  |
+|  |  | |
 | ------ | ------ |
 | GET | /organization | Organization lists |
 | GET | /organization/:id/ | Get organization |
