@@ -1,33 +1,14 @@
 import React, { Component } from 'react';
-import { Switch, NavLink, CrumbRoute } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux'
 import { Table, Container, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-
-import CreateOrganization from "./organization.create";
-import ShowOrganization from "./organization.show";
-import OrganizationService from '../../services/organization.service';
-
 class OrganizationList extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            organizations: [],
-        };
-    }
-
-    componentDidMount() {
-        OrganizationService.getList()
-            .then((res) => {
-                this.setState({ organizations: res });
-            });
-    }
-
-
     render() {
-        const { organizations } = this.state;
+        const { organizations } = this.props;
         const { match } = this.props;
         return (
             <Container>
@@ -62,13 +43,11 @@ class OrganizationList extends Component {
                         </Table>
                     </Col>
                 </Row>
-                <Switch>
-                    <CrumbRoute title="חדש" path={`${match.path}/create`} component={CreateOrganization} />
-                    <CrumbRoute path={`${match.path}/:id`} component={ShowOrganization} />
-                </Switch>
             </Container>
         );
     }
 }
 
-export default OrganizationList;
+export default connect(state=>{
+    organizations:state.organizations
+})(OrganizationList);
