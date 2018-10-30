@@ -1,6 +1,6 @@
 ## Page Navigation
 
-| Path |  
+|  |  |
 | ------ | ------ |
 | / | Redirect to / organization |
 | /organization | Organization lists |
@@ -19,8 +19,9 @@
 | /program/:id | View program details |
 | /program/:id/edit | Edit program |
 
+## Endpoints
 
-| Endpoints | README |
+|  |  |
 | ------ | ------ |
 | GET | /organization | Organization lists |
 | GET | /organization/:id/ | Get organization |
