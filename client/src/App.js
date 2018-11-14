@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { StaticNavBar } from './components/TopBar/TopBar';
-import Menu from './menu.jsx'
+import Menu from './menu/menuComponent.jsx';
 class App extends Component {
   render() {
     return (
@@ -13,4 +13,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App ;
