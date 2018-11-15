@@ -4,15 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import rootReducer from './reducers'
-import { setOrganizations } from './actions'
-import organizationsService from './services/organization.service';
-const store = createStore(rootReducer);
-
-organizationsService.getList().then(organizations => {
-    store.dispatch(setOrganizations(organizations));
-});
+import store from './redux/store';
 
 ReactDOM.render((
     <Provider store={store}>

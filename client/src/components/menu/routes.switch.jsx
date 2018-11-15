@@ -1,13 +1,13 @@
 import { Switch, Route} from 'react-router-dom';
 import React from 'react';
 
-import OrganizationsList from '../components/Organization/organization.list';
-import CreateOrganization from '../components/Organization/organization.create';
-import ShowOrganization from '../components/Organization/organization.show';
+import OrganizationsList from '../organization/organization.list';
+import CreateOrganization from '../organization/organization.create';
+import ShowOrganization from '../organization/organization.show';
 
-import CustomersList from '../components/Customer/customer.list';
-import CreateCustomer from '../components/Customer/customer.create';
-import ShowCustomer from '../components/Customer/customer.show';
+import CustomersList from '../customer/customer.list';
+import CreateCustomer from '../customer/customer.create';
+import ShowCustomer from '../customer/customer.show';
 
 export default (
     <Switch>

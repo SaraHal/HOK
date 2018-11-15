@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import OrganizationService from '../../services/organization.service';
 
@@ -21,6 +21,16 @@ class Show extends Component {
       });
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { id } = nextProps.match.params;
+    if (this.props.match.params.id !== id)
+      OrganizationService.get(id)
+        .then((res) => {
+          this.setState({ organization: res });
+          // console.log(this.state.organization);
+        });
+  }
+
   delete(id) {
     // console.log(id);
     OrganizationService.delete(`/api/organization/${id}`)
@@ -33,27 +43,27 @@ class Show extends Component {
     const { match } = this.props;
     const { organization } = this.state;
     return <div className="container">
-            <div className="panel panel-default">
-                <div className="panel-heading">
-                    <h3 className="panel-title">
-                        {organization.name}
-                    </h3>
-                </div>
-                <div className="panel-body">
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <h3 className="panel-title">
+            {organization.name}
+          </h3>
+        </div>
+        <div className="panel-body">
 
-                    <dl>
-                        <dt>Name:</dt>
-                        <dd>{organization.name}</dd>
-                        <dt>Code:</dt>
-                        <dd>{organization.code}</dd>
+          <dl>
+            <dt>Name:</dt>
+            <dd>{organization.name}</dd>
+            <dt>Code:</dt>
+            <dd>{organization.code}</dd>
 
-                    </dl>
+          </dl>
 
-                    <Link to={`${match.url}/edit`} className="btn btn-success">Edit</Link>
-                    <button onClick={this.delete.bind(this, organization._id)} className="btn btn-danger">Delete</button>
-                </div>
-            </div>
-        </div>;
+          <Link to={`${match.url}/edit`} className="btn btn-success">Edit</Link>
+          <button onClick={this.delete.bind(this, organization._id)} className="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>;
   }
 }
 

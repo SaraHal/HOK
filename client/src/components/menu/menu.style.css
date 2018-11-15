@@ -1,0 +1,25 @@
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    right: 150px;
+    height: 100%;
+    margin-right: -150px;
+    overflow-y: auto;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    width: 150px;
+}
+
+.menu-node{
+    padding: 3% 25px;
+    font-size: 20px
+}
+
+.menu-node > div{
+    display: none;
+}
+.menu-node:hover > div{
+    display: block;
+}
