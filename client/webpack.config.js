@@ -9,19 +9,19 @@ module.exports = {
         path: __dirname,
         filename: "bundle.js"
     },
-
     devServer: {
         historyApiFallback: true,
     },
     module: {
-        rules: [{
-            exclude: /node_modules/,
-            loader: 'babel-loader'
-        },
-        {
-            test: /\.css$/,
-            use: ['style-loader', 'css-loader']
-        }
+        rules:[
+            {
+                loader: 'babel-loader',
+                exclude: /node_modules\/(?!(react-bootstrap-sidebar)\/).*/
+            },
+            {
+                test: /\.css$/,
+                use: [ "style-loader", "css-loader"],
+            }
         ]
     },
     resolve: {

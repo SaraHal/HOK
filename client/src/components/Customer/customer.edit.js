@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import { Link } from 'react-router-dom';
 import CustomerService from '../../services/customer.service'
 
 class Edit extends Component {
@@ -8,13 +7,13 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      customer: {}
+      customer: {id:'', firstName:'', lastName:''}
     };
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
-    CustomerService.get(id)
+    const { customerID } = this.props.match.params;
+    CustomerService.get(customerID)
       .then(res => {
         this.setState({ customer: res });
 
@@ -22,19 +21,18 @@ class Edit extends Component {
   }
 
   onChange = (e) => {
-    const state = this.state.organization;
+    const state = this.state.customer;
     state[e.target.name] = e.target.value;
     this.setState({ customer: state });
   }
 
   onSubmit = (e) => {
     e.preventDefault();
-    const { id: _id } = this.props.match.params;
+    const { customerID } = this.props.match.params;
     const { id, firstName, lastName } = this.state.customer;
 
-    axios.put(`/api/customer/${_id}`, { id, firstName, lastName })
-      .then((result) => {
-        this.props.history.push(`/customer/${_id}`)
+    CustomerService.update(customerID,  { id, firstName, lastName }).then((result) => {
+        this.props.history.push(`/organizations/${id}/customers/${customerID}`)
       });
   }
 
@@ -50,7 +48,6 @@ class Edit extends Component {
             </h3>
           </div>
           <div className="panel-body">
-            <h4><Link to={`/organizations/${this.state.customer._id}`}><span className="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Customer List</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
                 <label htmlFor="id">ת.ז.</label>

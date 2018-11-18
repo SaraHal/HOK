@@ -1,74 +1,50 @@
-import React, { Component } from 'react';
-import { Switch, NavLink, CrumbRoute } from 'react-router-dom';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux'
 import { Table, Container, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
+const OrganizationList = (props) => {
+    const { organizations } = props;
+    const { match } = props;
+    return (
+        <Container>
+            <div className="panel-heading">
+                <h3 className="panel-title" style={{ display: 'inline' }}>
+                    ארגונים
+                     </h3>
+                <NavLink to={`${match.url}/create`} className="btn btn-outline-secondary" style={{ float: 'left' }}> <FontAwesomeIcon icon={faPlus} /> חדש</NavLink>
+            </div>
+            <Row>
+                <Col md="12">
+                    <Table borderless hover>
+                        <thead>
+                            <tr>
+                                <th>שם</th>
+                                <th>קוד</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-import CreateOrganization from "./organization.create";
-import ShowOrganization from "./organization.show";
-import OrganizationService from '../../services/organization.service';
+                            {organizations.map(organization =>
 
-class OrganizationList extends Component {
+                                <tr key={organization._id}>
+                                    <td><NavLink to={`${match.url}/${organization._id}`}>{organization.name}</NavLink></td>
+                                    <td><NavLink to={`${match.url}/${organization._id}`}>{organization.code}</NavLink></td>
+                                    <td><NavLink to={`${match.url}/${organization._id}/customers`}>לקוחות</NavLink></td>
+                                    <td><NavLink to={`${match.url}/${organization._id}/projects`}>פרויקטים</NavLink></td>
+                                </tr>,
+                            )}
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            organizations: [],
-        };
-    }
-
-    componentDidMount() {
-        OrganizationService.getList()
-            .then((res) => {
-                this.setState({ organizations: res });
-            });
-    }
-
-
-    render() {
-        const { organizations } = this.state;
-        const { match } = this.props;
-        return (
-            <Container>
-                <div className="panel-heading">
-                    <h3 className="panel-title" style={{ display: 'inline' }}>
-                        ארגונים
-                         </h3>
-                    <NavLink to={`${match.url}/create`} className="btn btn-outline-secondary" style={{ float: 'left' }}> <FontAwesomeIcon icon={faPlus} /> חדש</NavLink>
-                </div>
-                <Row>
-                    <Col md="12">
-                        <Table borderless hover>
-                            <thead>
-                                <tr>
-                                    <th>שם</th>
-                                    <th>קוד</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                {organizations.map(organization =>
-
-                                    <tr key={organization._id}>
-                                        <td><NavLink to={`${match.url}/${organization._id}`}>{organization.name}</NavLink></td>
-                                        <td><NavLink to={`${match.url}/${organization._id}`}>{organization.code}</NavLink></td>
-                                        <td><NavLink to={`${match.url}/${organization._id}/customers`}>לקוחות</NavLink></td>
-                                        <td><NavLink to={`${match.url}/${organization._id}/projects`}>פרויקטים</NavLink></td>
-                                    </tr>,
-                                )}
-
-                            </tbody>
-                        </Table>
-                    </Col>
-                </Row>
-                <Switch>
-                    <CrumbRoute title="חדש" path={`${match.path}/create`} component={CreateOrganization} />
-                    <CrumbRoute path={`${match.path}/:id`} component={ShowOrganization} />
-                </Switch>
-            </Container>
-        );
-    }
+                        </tbody>
+                    </Table>
+                </Col>
+            </Row>
+        </Container>
+    );
 }
 
-export default OrganizationList;
+export default connect(state => ({
+    organizations: state.organizations
+}))(OrganizationList);

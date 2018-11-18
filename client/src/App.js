@@ -1,28 +1,19 @@
 import React, { Component } from 'react';
-import { Redirect, Switch, CrumbRoute} from 'react-router-dom';
 
 import { StaticNavBar } from './components/TopBar/TopBar';
-
-import OrganizationList from './components/Organization/organization.list';
-
-import { Breadcrumbs } from 'react-breadcrumbs';
+import Menu from './components/menu/menu.container';
+import routes from './components/menu/routes.switch';
 
 class App extends Component {
-
   render() {
     return (
-      <div>
+      <div id="wrapper">
         <StaticNavBar />
-        <Breadcrumbs hidden className="demo__crumbs" />
-        <div id="page-content-wrapper">
-          <Switch>
-            <CrumbRoute exact path='/' render={() => <Redirect to="/organizations" />} />
-            <CrumbRoute title="ארגונים" path='/organizations' component={OrganizationList}/>
-          </Switch>
-        </div>
+        <Menu/>
+        <div id="page-content-wrapper"> {routes}</div>
       </div>
     );
   }
 }
 
-export default App;
+export default App ;
