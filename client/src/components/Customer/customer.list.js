@@ -18,18 +18,26 @@ class CustomerList extends Component {
     }
 
     componentDidMount() {
-        const { id: organizationID } = this.props.match.params;
-        console.log(this.props);
+        const { organizationID} = this.props.match.params;
         OrganizationService.getCustomers(organizationID)
             .then(res => {
                 this.setState({ customers: res });
-                console.log(this.state.customers);
             });
+    }
+
+
+    componentWillReceiveProps(nextProps) {
+        const {organizationID } = nextProps.match.params;
+        if (this.props.match.params.organizationID !== organizationID)
+            OrganizationService.getCustomers(organizationID)
+                .then(res => {
+                    this.setState({ customers: res });
+                });
     }
 
     render() {
         const { match } = this.props;
-        const { id: organizationID } = match.params;
+        const { organizationID } = match.params;
         return (
 
             <div className="container">
@@ -56,17 +64,14 @@ class CustomerList extends Component {
                             <tbody>
                                 {this.state.customers.map(customer =>
                                     <tr key={customer._id}>
-                                        <td><NavLink to={`/customers/${customer._id}`}>{customer.id}</NavLink></td>
-                                        <td><NavLink to={`/customers/${customer._id}`}>{customer.lastName} {customer.firstName}</NavLink></td>
+                                        <td><NavLink to={`${match.url}/${customer._id}`}>{customer.id}</NavLink></td>
+                                        <td><NavLink to={`${match.url}/${customer._id}`}>{customer.lastName} {customer.firstName}</NavLink></td>
                                     </tr>
                                 )}
                             </tbody>
                         </Table>
                     </div>
                 </div>
-                <Switch>
-                    <CrumbRoute title="הוסף לקוח" path={`${match.path}/customers/create`} component={CreateCustomer} />
-                </Switch>
             </div>
         );
     }

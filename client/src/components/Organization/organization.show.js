@@ -13,8 +13,8 @@ class Show extends Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
-    OrganizationService.get(id)
+    const { organizationID } = this.props.match.params;
+    OrganizationService.get(organizationID)
       .then((res) => {
         this.setState({ organization: res });
         // console.log(this.state.organization);
@@ -22,22 +22,14 @@ class Show extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { id } = nextProps.match.params;
-    if (this.props.match.params.id !== id)
-      OrganizationService.get(id)
+    const { organizationID } = nextProps.match.params;
+    if (this.props.match.params.organizationID !== organizationID)
+      OrganizationService.get(organizationID)
         .then((res) => {
           this.setState({ organization: res });
-          // console.log(this.state.organization);
         });
   }
 
-  delete(id) {
-    // console.log(id);
-    OrganizationService.delete(`/api/organization/${id}`)
-      .then(() => {
-        this.props.history.push('/');
-      });
-  }
 
   render() {
     const { match } = this.props;
@@ -60,7 +52,6 @@ class Show extends Component {
           </dl>
 
           <Link to={`${match.url}/edit`} className="btn btn-success">Edit</Link>
-          <button onClick={this.delete.bind(this, organization._id)} className="btn btn-danger">Delete</button>
         </div>
       </div>
     </div>;

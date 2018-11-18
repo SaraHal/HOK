@@ -12,6 +12,14 @@ export default withRouter(connect(state => {
             label: o.name,
             icon: 'fas fa-car',
             link: '/organizations/' + o._id,
+            items:[
+                {
+                    id: o._id+'/customers',
+                    label: 'לקוחות',
+                    icon: 'fas fa-car',
+                    link: '/organizations/' + o._id+'/customers',                
+                }
+            ]
         });
     });
     return { items };

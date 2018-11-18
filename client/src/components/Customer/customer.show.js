@@ -12,18 +12,16 @@ class Show extends Component {
     }
 
     componentDidMount() {
-    
-        const { id } = this.props.match.params;
- 
-        CustomerService.get(id)
+        const { customerID } = this.props.match.params;
+        CustomerService.get(customerID)
             .then(res => {
                 this.setState({ customer: res });
-                console.log(this.state.customer);
             });
     }
-   
+
 
     render() {
+        const { match } = this.props;
         const { id, firstName, lastName } = this.state.customer;
 
         return (
@@ -35,7 +33,6 @@ class Show extends Component {
                         </h3>
                     </div>
                     <div className="panel-body">
-                        <h4><Link to="/"><span className="glyphicon glyphicon-th-list" aria-hidden="true"></span> Customer List</Link></h4>
                         <dl>
                             <dt>ID:</dt>
                             <dd>{id}</dd>
@@ -45,10 +42,8 @@ class Show extends Component {
                             <dd>{lastName}</dd>
                         </dl>
 
+                        <Link to={`${match.url}/edit`} className="btn btn-success">Edit</Link>&nbsp;
 
-
-                        <Link to={`/organizations/edit/${this.state.customer._id}`} className="btn btn-success">Edit</Link>&nbsp;
-            
                     </div>
                 </div>
             </div>
