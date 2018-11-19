@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-
-import { Link } from 'react-router-dom';
 import ProjectService from '../../services/project.service'
 
 class Create extends Component {
@@ -21,8 +18,8 @@ class Create extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { id, name } = this.state;
-    const { id: organization } = this.props.match.params;
+    const {name } = this.state;
+    const {organizationID : organization} = this.props.match.params;
     ProjectService.create({ name, organization })
       .then((result) => {
         this.props.history.push(`/organizations/${organization}/projects`)
@@ -30,17 +27,14 @@ class Create extends Component {
   }
 
   render() {
-    const { id, name } = this.state;
+    const { name } = this.state;
     return (
       <div className="container">
         <div className="panel panel-default">
           <div className="panel-heading">
-            <h3 className="panel-title">
-              פרויקט חדש
-            </h3>
+            <h3 className="panel-title">פרויקט חדש</h3>
           </div>
           <div className="panel-body">
-
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
                 <label htmlFor="name">שם</label>

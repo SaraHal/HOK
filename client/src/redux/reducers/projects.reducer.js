@@ -1,13 +1,13 @@
-const customers = (state = { current: {}, list: [] }, action) => {
+const projects = (state = { current: {}, list: [] }, action) => {
     switch (action.type) {
-        case 'SET_CUSTOMERS':
+        case 'SET_PROJECTS':
             return {
                 ...state,
                 list: [
-                    ...action.customers
+                    ...action.projects
                 ],
             }
-        case 'SET_CURRENT_CUSTOMER':
+        case 'SET_CURRENT_PROJECT':
             return {
                 ...state,
                 current: {
@@ -19,4 +19,4 @@ const customers = (state = { current: {}, list: [] }, action) => {
     }
 }
 
-export default customers
+export default projects

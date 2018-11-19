@@ -9,11 +9,11 @@ class App extends Component {
     return (
       <div id="wrapper">
         <StaticNavBar />
-        <Menu/>
+        <Menu />
         <div id="page-content-wrapper"> {routes}</div>
       </div>
     );
   }
 }
 
-export default App ;
+export default App;

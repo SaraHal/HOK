@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-
-import { Link } from 'react-router-dom';
 import ProgramService from '../../services/program.service'
 
 class Create extends Component {
@@ -25,10 +22,10 @@ class Create extends Component {
     e.preventDefault();
 
     const { sum, startDate, numOfPayments } = this.state;
-    const { id: customer } = this.props.match.params;
-    ProgramService.create({ customer,sum, startDate, numOfPayments  })
+    const { customerID, organizationID } = this.props.match.params;
+    ProgramService.create({ customerID,sum, startDate, numOfPayments  })
       .then((result) => {
-        this.props.history.push(`/customer/${customer}/program`)
+        this.props.history.push(`organizations/${organizationID}/customer/${customerID}/program`)
       });
   }
 

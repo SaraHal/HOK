@@ -1,9 +1,19 @@
-const organizations = (state = [], action) => {
+const organizations = (state = { current: {}, list: [] }, action) => {
     switch (action.type) {
         case 'SET_ORGANIZATIONS':
-            return [
-                ...action.organizations
-            ]
+            return {
+                ...state,
+                list: [
+                    ...action.organizations
+                ],
+            }
+        case 'SET_CURRENT_ORGANIZATION':
+            return {
+                ...state,
+                current: {
+                    ...action.current
+                },
+            }
         default:
             return state;
     }

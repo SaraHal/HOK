@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-
-import { Link } from 'react-router-dom';
 import CustomerService from '../../services/customer.service'
 
 class Create extends Component {
@@ -25,10 +22,10 @@ class Create extends Component {
     e.preventDefault();
 
     const { id, firstName, lastName } = this.state;
-    const { id: organization } = this.props.match.params;
+    const { organizationID: organization } = this.props.match.params;
     CustomerService.create({ id, firstName, lastName, organization })
       .then((result) => {
-        this.props.history.push(`/organizations/${organization}/customer`)
+        this.props.history.push(`/organizations/${organization}/customers`)
       });
   }
 

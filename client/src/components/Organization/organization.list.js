@@ -1,12 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux'
 import { Table, Container, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
+import actions from '../../redux/actions';
+import dataLoader from '../data-loader-hoc.jsx';
+
 const OrganizationList = (props) => {
-    const { organizations } = props;
+    const { list } = props;
     const { match } = props;
     return (
         <Container>
@@ -27,7 +29,7 @@ const OrganizationList = (props) => {
                         </thead>
                         <tbody>
 
-                            {organizations.map(organization =>
+                            {list.map(organization =>
 
                                 <tr key={organization._id}>
                                     <td><NavLink to={`${match.url}/${organization._id}`}>{organization.name}</NavLink></td>
@@ -45,6 +47,4 @@ const OrganizationList = (props) => {
     );
 }
 
-export default connect(state => ({
-    organizations: state.organizations
-}))(OrganizationList);
+export default dataLoader(OrganizationList, actions.loadOrganizations, 'organizations');

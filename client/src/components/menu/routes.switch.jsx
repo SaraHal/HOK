@@ -11,16 +11,31 @@ import CreateCustomer from '../customer/customer.create';
 import ShowCustomer from '../customer/customer.show';
 import EditCustomer from '../customer/customer.edit';
 
+
+import ProgramsList from '../program/program.list.jsx';
+import CreateProgram from '../program/program.create.jsx';
+
+import ProjectsList from '../project/project.list';
+import CreateProject from '../project/project.create';
+import ShowProject from '../project/project.show';
+import EditProject from '../project/project.edit';
+
 export default (
     <Switch>
         <Route path="/" exact component={() => (<div/>)} />
         <Route path="/organizations" exact component={OrganizationsList} />
         <Route path="/organizations/create" exact component={CreateOrganization} />
-        <Route path="/organizations/:organizationID/edit" exact component={EditOrganization} />
         <Route path="/organizations/:organizationID" exact component={ShowOrganization} />
+        <Route path="/organizations/:organizationID/edit" exact component={EditOrganization} />
         <Route path="/organizations/:organizationID/customers" exact component={CustomersList} />
         <Route path="/organizations/:organizationID/customers/create" exact component={CreateCustomer} />
         <Route path="/organizations/:organizationID/customers/:customerID" exact component={ShowCustomer} />
         <Route path="/organizations/:organizationID/customers/:customerID/edit" exact component={EditCustomer} />
+        <Route path="/organizations/:organizationID/customers/:customerID/programs" exact component={ProgramsList} />
+        <Route path="/organizations/:organizationID/customers/:customerID/programs/create" exact component={CreateProgram} />
+        <Route path="/organizations/:organizationID/projects" exact component={ProjectsList} />
+        <Route path="/organizations/:organizationID/projects/create" exact component={CreateProject} />
+        <Route path="/organizations/:organizationID/projects/:projectID" exact component={ShowProject} />
+        <Route path="/organizations/:organizationID/projects/:projectID/edit" exact component={EditProject} />
     </Switch>
 )

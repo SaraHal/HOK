@@ -1,63 +1,48 @@
 import React, { Component } from 'react';
 
-import { Link } from 'react-router-dom';
-import OrganizationService from '../../services/organization.service';
+import actions from '../../redux/actions';
+import dataLoader from '../data-loader-hoc.jsx';
+
+import ProjectService from '../../services/project.service';
 class Edit extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      organization: {}
+      project: this.props.current
     };
   }
-
-  componentDidMount() {
-    const { id } = this.props.match.params;
-    OrganizationService.get(id)
-      .then(res => {
-        this.setState({ organization: res });
-        console.log(this.state.organization);
-      });
-  }
-
   onChange = (e) => {
-    const state = this.state.organization;
+    const state = this.state.project;
     state[e.target.name] = e.target.value;
-    this.setState({ organization: state });
+    this.setState({ project: state });
   }
 
   onSubmit = (e) => {
     e.preventDefault();
-    const { id } = this.props.match.params;
-    const { name, code } = this.state.organization;
+    const { organizationID, projectID } = this.props.match.params;
+    const { name } = this.state.project;
 
-    OrganizationService.update(id, { name, code })
+    ProjectService.update(projectID, { name })
       .then((result) => {
-        this.props.history.push(`/organizations/${id}`)
+        this.props.history.push(`/organizations/${organizationID}/projects/${projectID}`)
       });
   }
 
   render() {
-    const { name, code } = this.state.organization;
+    const { name } = this.state.project;
     return (
       <div className="container">
         <div className="panel panel-default">
           <div className="panel-heading">
-            <h3 className="panel-title">
-              EDIT ORGANIZATION
-            </h3>
+            <h3 className="panel-title">עריכת פרויקט</h3>
           </div>
           <div className="panel-body">
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
-                <label fohtmlForr="name">Name:</label>
+                <label htmlFor="name">Name:</label>
                 <input type="text" className="form-control" name="name" value={name} onChange={this.onChange} placeholder="Name" />
               </div>
-              <div className="form-group">
-                <label htmlFor="title">Code:</label>
-                <input type="text" className="form-control" name="code" value={code} onChange={this.onChange} placeholder="Code" />
-              </div>
-
               <button type="submit" className="btn btn-default">Submit</button>
             </form>
           </div>
@@ -67,4 +52,4 @@ class Edit extends Component {
   }
 }
 
-export default Edit;
+export default dataLoader(Edit, actions.loadProject, 'projects');

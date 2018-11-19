@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import actions from '../../redux/actions';
+import dataLoader from '../data-loader-hoc.jsx';
+
 import CustomerService from '../../services/customer.service'
 
 class Edit extends Component {
@@ -7,17 +10,8 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      customer: {id:'', firstName:'', lastName:''}
+      customer: props.current
     };
-  }
-
-  componentDidMount() {
-    const { customerID } = this.props.match.params;
-    CustomerService.get(customerID)
-      .then(res => {
-        this.setState({ customer: res });
-
-      });
   }
 
   onChange = (e) => {
@@ -28,17 +22,16 @@ class Edit extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const { customerID } = this.props.match.params;
+    const { organizationID,customerID } = this.props.match.params;
     const { id, firstName, lastName } = this.state.customer;
 
-    CustomerService.update(customerID,  { id, firstName, lastName }).then((result) => {
-        this.props.history.push(`/organizations/${id}/customers/${customerID}`)
-      });
+    CustomerService.update(customerID, { id, firstName, lastName }).then((result) => {
+      this.props.history.push(`/organizations/${organizationID}/customers/${customerID}`)
+    });
   }
 
   render() {
     const { id, firstName, lastName } = this.state.customer;
-
     return (
       <div className="container">
         <div className="panel panel-default">
@@ -70,4 +63,4 @@ class Edit extends Component {
   }
 }
 
-export default Edit;
+export default dataLoader(Edit, actions.loadCustomer, 'customers');

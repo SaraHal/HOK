@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import actions from '../../redux/actions';
+import dataLoader from '../data-loader-hoc.jsx';
 import OrganizationService from '../../services/organization.service';
 
 class Edit extends Component {
@@ -8,17 +10,8 @@ class Edit extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
-      organization: {},
+      organization: this.props.current,
     };
-  }
-
-  componentDidMount() {
-    const { id } = this.props.match.params;
-    OrganizationService.get(id)
-      .then((res) => {
-        this.setState({ organization: res });
-        // console.log(this.state.organization);
-      });
   }
 
   onChange(e) {
@@ -29,12 +22,12 @@ class Edit extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const { id } = this.props.match.params;
+    const { organizationID } = this.props.match.params;
     const { name, code } = this.state.organization;
 
-    OrganizationService.update(id, { name, code })
+    OrganizationService.update(organizationID, { name, code })
       .then(() => {
-        this.props.history.push(`/organizations/${id}`);
+        this.props.history.push(`/organizations/${organizationID}`);
       });
   }
 
@@ -68,4 +61,4 @@ class Edit extends Component {
   }
 }
 
-export default Edit;
+export default dataLoader(Edit, actions.loadOrganization, 'organizations');
