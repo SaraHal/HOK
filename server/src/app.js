@@ -1,19 +1,17 @@
 var express = require('express');
 var path = require('path');
-
+const config = require('config');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost/hok', { useMongoClient: true, promiseLibrary: require('bluebird') })
+mongoose.connect(config.get('db_connection_str'), { useMongoClient: true, promiseLibrary: require('bluebird') })
   .then(() => console.log('connection succesful'))
   .catch((err) => console.error(err));
 var cors = require('cors');
 
 var organization = require('./routes/organization.route');
-var customer = require('./routes/customer.route');
 var program = require('./routes/program.route');
-var project = require('./routes/project.route');
 
 var app = express();
 app.use(cors())
@@ -22,9 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ 'extended': 'false' }));
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.use('/api/project', project);
 app.use('/api/program', program);
-app.use('/api/customer', customer);
 app.use('/api/organization', organization);
 
 

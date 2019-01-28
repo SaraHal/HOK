@@ -1,57 +1,34 @@
 
+import Organization from '../schemas/organization.schema';
 
+const create = function (req, res, next) {
+    Organization.create(req.body, function (err, organization) {
+        if (err) return next(err);
+        res.json(organization);
+    });
+};
 
-import Organization from '../models/organization.model';
-import Customer from '../models/customer.model';
-import Project from '../models/project.model';
-
-
+const update = function (req, res, next) {
+    Organization.findByIdAndUpdate(req.params.id,req.body,
+        {safe: true, upsert: true, new : true}, function (err, organization) {
+        if (err) return next(err);
+        res.json(organization);
+    });
+}
 
 const get = function (req, res, next) {
-    Organization.find(function (err, products) {
+    Organization.find(req.query,function (err, organizations) {
         if (err) return next(err);
-        res.json(products);
+        res.json(organizations);
     });
 };
 
 const getById = function (req, res, next) {
-    Organization.findById(req.params.id, function (err, post) {
+    Organization.findById(req.params.id, function (err, organization) {
         if (err) return next(err);
-        res.json(post);
+        res.json(organization);
     });
 };
 
-
-const create = function (req, res, next) {
-    Organization.create(req.body, function (err, post) {
-        if (err) return next(err);
-        res.json(post);
-    });
-};
-
-
-const update = function (req, res, next) {
-    Organization.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
-        if (err) return next(err);
-        res.json(post);
-    });
-};
-
-const getCustomers = function (req, res, next) {
-    const { id: organization } = req.params;
-    Customer.find({ organization }, function (err, customer) {
-        if (err) return next(err);
-        res.json(customer);
-    });
-};
-
-const getPrograms = function (req, res, next) {
-    const { id: organization } = req.params;
-    Project.find({ organization }, function (err, project) {
-        if (err) return next(err);
-        res.json(project);
-    });
-};
-
-export default { get, getById, create, update, getCustomers, getPrograms }
+export default { get, getById, create, update}
 
