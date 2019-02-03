@@ -22,7 +22,7 @@ const get = function (req, res, next) {
 };
 
 const getById = function (req, res, next) {
-    Program.findById(req.params.id).exec(function (err, program) {
+    Program.findById(req.params.id).populate('organization').exec(function (err, program) {
         if (err) return next(err);
         res.json(program);
     });
