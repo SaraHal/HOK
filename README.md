@@ -13,7 +13,7 @@
  * concats (Type: [ Concat ])
  * paymentAgreement
     * minPrice (Required, Type: Number)
-    * commissionPerUnit (Required, Type: Number)
+    * feePerUnit (Required, Type: Number)
     * dayOfCharge (Required, Type: Number, range: 1-28)
     * paymentMethod (Required, Type: PaymentMethod)
     
