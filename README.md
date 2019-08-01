@@ -17,17 +17,32 @@
     * dayOfCharge (Required, Type: Number, range: 1-28)
     * paymentMethod (Required, Type: PaymentMethod)
     
+##### Concat
+ * name (Required, Type: string, max-length:35)
+ * celular (Required, Type: string, length:10)
+ * email (Type: Email, max-length:50)
+ * remarks  (Type: Email, max-length:50)
+ 
+##### Project
+ * Name (Required, Type: string, max-length:25)
+ * Organization (Required, Type: ObjectId)
+
 ##### Customer
  * Id (Required, Type: string, length:9)
  * First name (Required, Type: string, max-length:25)
  * Last Name (Required, Type: string, max-length:25)
  * communication (Required, Type: Communication)
  * Organization (Type: ObjectId)
- 
-##### Project
- * Name (Required, Type: string, max-length:25)
- * Organization (Required, Type: ObjectId)
- 
+
+##### Communication 
+ * address
+    * city
+      * id (Required, Type: string, length: 15)
+      * name (Required, Type: string, length: 25)
+    * street (Type: string, max-length:50)
+ * phone (Type: string, length:10)
+ * email (Type: Email, max-length:50)
+
 ##### Program
  * sum (Required, Type: Number)
  * startDate  (Required, Type: Date)
@@ -47,20 +62,9 @@
     * expiringDate (Required, Type: Mm/yyyy)
     * cvv2 (Required, Type: string, length: 3)
     
-##### Concat
- * name (Required, Type: string, max-length:35)
- * celular (Required, Type: string, length:10)
- * email (Type: Email, max-length:50)
- * remarks  (Type: Email, max-length:50)
+
  
-##### Communication 
- * address
-    * city
-      * id (Required, Type: string, length: 15)
-      * name (Required, Type: string, length: 25)
-    * street (Type: string, max-length:50)
- * phone (Type: string, length:10)
- * email (Type: Email, max-length:50)
+
     
 ## Page Navigation
 
